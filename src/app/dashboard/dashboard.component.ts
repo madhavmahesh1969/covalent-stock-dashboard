@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements AfterViewInit {
   @ViewChild('manageList') manageList: TdLayoutManageListComponent;
   @ViewChild('dialogContent') template: TemplateRef<any>;
-
+	more: boolean;
   // Theme toggle
   get activeTheme(): string {
     return localStorage.getItem('theme');
