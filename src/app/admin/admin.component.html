@@ -1,0 +1,51 @@
+<div layout="column" layout-fill>
+    <div class="mat-content" layout-padding flex>
+        <div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+            <div flex-gt-xs="50">
+                <mat-card tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']">
+                    <mat-card-title>
+                        News Feed</mat-card-title>
+                    <mat-divider></mat-divider>
+                    <mat-card-content>
+                        <form #newsFeedForm="ngForm">
+                            <div layout="row">
+                                <mat-form-field flex>
+                                    <input matInput #userElement #userControl="ngModel" placeholder="Channel name" type="text" maxlength="30" name="channelname" [(ngModel)]="channelname" required>
+                                </mat-form-field>
+                            </div>
+                            <div layout="row">
+                                <mat-form-field flex>
+                                    <input matInput #userElement #userControl="ngModel" placeholder="Company Name" type="text" maxlength="30" name="companyname" [(ngModel)]="companyname" required>
+                                </mat-form-field>
+                            </div>
+                            <div layout="row">
+                                <mat-form-field flex>
+                                    <input matInput #userElement #userControl="ngModel" placeholder="share Value" type="text" maxlength="30" name="sharevalue" [(ngModel)]="sharevalue" required>
+                                </mat-form-field>
+                            </div>
+                            <div layout="row">
+                                <mat-form-field flex>
+                                    <input matInput #userElement #userControl="ngModel" placeholder="time" type="text" maxlength="30" name="time" [(ngModel)]="time" required>
+                                </mat-form-field>
+                            </div>
+                            <div layout="row">
+                                <mat-form-field flex>
+                                    <input matInput #userElement #userControl="ngModel" placeholder="News Title" type="text" maxlength="30" name="title" [(ngModel)]="title" required>
+                                </mat-form-field>
+                            </div>
+                            <div layout="row">
+                                <mat-form-field flex>
+                                    <input matInput #userElement #userControl="ngModel" placeholder="News Content" type="text" maxlength="30" name="content" [(ngModel)]="content" required>
+                                </mat-form-field>
+                            </div>
+                        </form>
+                    </mat-card-content>
+                    <mat-divider></mat-divider>
+                    <mat-card-actions layout="row">
+                        <button flex mat-raised-button color="accent" [disabled]="!newsFeedForm.form.valid">Update news feed</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

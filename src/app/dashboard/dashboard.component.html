@@ -1,0 +1,64 @@
+<td-layout [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'push'" [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '240px' : '100%'" [class]="'theme-dark'">
+    <td-layout-nav [toolbarTitle]="''" logo="" navigationRoute="/">
+        <div td-toolbar-content layout="row" layout-align="start center" flex>
+            <button mat-button (click)="sdb()"><mat-icon>brush</mat-icon></button>
+            <div class="spacer">
+            </div>
+            <div td-toolbar-content layout="row" layout-align="start center" flex>
+                <td-search-box class="td-search-box" [alwaysVisible]="true" #searchBox placeholder="Search" [showUnderline]="false"></td-search-box>
+                <div class="spacer">
+                </div>
+                <button mat-button (click)="sdb()">Home</button>
+                <button mat-button (click)="admin()">Admin</button>
+                <button mat-button [matMenuTriggerFor]="notificationsMenu">Notifications</button>
+                <mat-menu #AccountMenu="matMenu">
+                    <td-menu class="account-td-menu">
+                        <div td-menu-header class="mat-subhead">Leelasri yaramolu</div>
+                        <div>
+                            <div class="acc-left">
+                                <div class="account-port">$82.43</div>
+                                <div class="account-title">Portfolio Value</div>
+                            </div>
+                            <div>
+                                <div class="account-port">$0.47</div>
+                                <div class="account-title">Buyiing Power</div>
+                            </div>
+                        </div>
+                        <mat-nav-list dense>
+                            <ng-template let-last ngFor [ngForOf]="account">
+                                <a mat-list-item>
+                                    <mat-icon matListAvatar class="mat-icon-white">{{last.icon}}</mat-icon>
+                                    <div td-menu-header class="mat-subhead">{{last.iconName}}</div>
+                                </a>
+                                <mat-divider *ngIf="!last"></mat-divider>
+                            </ng-template>
+                        </mat-nav-list>
+                    </td-menu>
+                </mat-menu>
+                <button mat-button [matMenuTriggerFor]="AccountMenu">Account</button>
+                <button mat-icon-button [mat-menu-trigger-for]="more">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+            </div>
+            <span>
+                <mat-menu #notificationsMenu="matMenu">
+                    <td-menu class="td-menu">
+                        <mat-nav-list dense>
+                            <ng-template let-last ngFor [ngForOf]="notification">
+                                <a mat-list-item classs="mat-list-notification">
+                                    <h1 matLine>{{last.title}}</h1>
+                                    <h2 matLine>{{last.subTitle}}</h2>
+                                </a>
+                                <mat-divider *ngIf="!last"></mat-divider>
+                            </ng-template>
+                        </mat-nav-list>
+                        <button mat-button color="accent" td-menu-footer>
+                            View History
+                        </button>
+                    </td-menu>
+                </mat-menu>
+            </span>
+        </div>
+        <router-outlet></router-outlet>
+    </td-layout-nav>
+</td-layout>

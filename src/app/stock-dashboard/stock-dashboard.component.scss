@@ -1,0 +1,103 @@
+.cdk-overlay-connected-position-bounding-box,
+.mat-menu {
+    top: 50px !important;
+}
+
+.container {
+    // padding: 0 20%;
+}
+
+.wrapper {
+    width: 800px;
+}
+
+.item {
+    pointer-events: none;
+    min-width: 200px;
+    min-height: 200px;
+    margin: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected-item {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.selected-item-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigat-white {
+    color: white;
+}
+
+.tof-card {
+    width: 120px;
+    padding: 10px !important;
+    // float: left;
+    display: inline-block !important;
+    .one,
+    .two,
+    .three,
+    .four {
+        padding-top: 15px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .two {
+        margin-bottom: 15px;
+    }
+    .three {
+        color: orangered;
+        font-size: 22px;
+    }
+    .four {
+        color: green;
+    }
+}
+
+rect {
+    width: 600px !important;
+    height: 250px !important;
+}
+
+.date-buttons {
+    border: black;
+    background: black;
+    color: white;
+}
+
+.value {
+    margin: 5px 0;
+}
+
+.channelname {}
+
+.companyname {
+    color: red
+}
+
+.time {
+    color: gray
+}
+
+.title {
+    font-size: 18px;
+}
+
+.content {}
+
+.views {
+    padding-top: -10px;
+    color: gray
+}
+
+.top-news-card {
+    padding: 15px 0 !important;
+}

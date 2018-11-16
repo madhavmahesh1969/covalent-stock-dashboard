@@ -1,0 +1,428 @@
+<div flex layout-gt-sm="row" tdMediaToggle="gt-xs" layout-wrap [mediaClasses]="['push-sm']">
+    <div flex-gt-sm="8">
+    </div>
+    <div flex-gt-sm="60">
+        <div>
+            <h1>${{this.portFolioValue}}</h1>
+            <h4 class="value">-$0.66(-0.79%)<span style="color:gray"> Today</span></h4>
+            <h4 class="value">-$0.00(-0.00%)<span style="color:gray"> After Hours</span></h4>
+        </div>
+        <mat-card>
+            <div [style.height.px]="280" class="push-top-sm">
+                <ngx-charts-line-chart [scheme]="{ domain: [ 'red'] }" [results]="times" [gradient]="gradient" [autoScale]="false" [xAxis]="false" [yAxis]="true" [legend]="false">
+                </ngx-charts-line-chart>
+            </div>
+            <div>
+                <button class="date-buttons" (click)="oneDay()">1D</button>
+                <button class="date-buttons" (click)="oneWeek()">1W</button>
+                <button class="date-buttons" (click)="oneMonth()">1M</button>
+                <button class="date-buttons" (click)="threeMonth()">3M</button>
+                <button class="date-buttons" (click)="oneYear()">1Y</button>
+                <button class="date-buttons" (click)="all()">All</button>
+            </div>
+            <mat-divider></mat-divider>
+        </mat-card>
+        <div tdMediaToggle="gt-xs" class="push-top-sm">
+            <!--<mat-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+                <mat-card-header>
+                    <mat-card-title>Top Movers</mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <mat-card class="tof-card">
+                    <div class="one">Liberty</div>
+                    <div class="two">Trip advisor</div>
+                    <mat-divider></mat-divider>
+                    <div class="three">Liberty</div>
+                    <div class="four">Trip advisor</div>
+                </mat-card>
+                <mat-card class="tof-card">
+                    <div class="one">Liberty</div>
+                    <div class="two">Trip advisor</div>
+                    <mat-divider></mat-divider>
+                    <div class="three">Liberty</div>
+                    <div class="four">Trip advisor</div>
+                </mat-card>
+                <mat-card class="tof-card">
+                    <div class="one">Liberty</div>
+                    <div class="two">Trip advisor</div>
+                    <mat-divider></mat-divider>
+                    <div class="three">Liberty</div>
+                    <div class="four">Trip advisor</div>
+                </mat-card>
+                <mat-card class="tof-card">
+                    <div class="one">Liberty</div>
+                    <div class="two">Trip advisor</div>
+                    <mat-divider></mat-divider>
+                    <div class="three">Liberty</div>
+                    <div class="four">Trip advisor</div>
+                </mat-card>
+                <mat-card class="tof-card">
+                    <div class="one">Liberty</div>
+                    <div class="two">Trip advisor</div>
+                    <mat-divider></mat-divider>
+                    <div class="three">Liberty</div>
+                    <div class="four">Trip advisor</div>
+                </mat-card>
+                <mat-card class="tof-card">
+                    <div class="one">Liberty</div>
+                    <div class="two">Trip advisor</div>
+                    <mat-divider></mat-divider>
+                    <div class="three">Liberty</div>
+                    <div class="four">Trip advisor</div>
+                </mat-card>
+                <mat-card class="tof-card">
+                    <div class="one">Liberty</div>
+                    <div class="two">Trip advisor</div>
+                    <mat-divider></mat-divider>
+                    <div class="three">Liberty</div>
+                    <div class="four">Trip advisor</div>
+                </mat-card>
+            </mat-card>-->
+            <div class="container">
+                <h1>Top Movers</h1>
+                <div ng2-carouselamos [width]="700" [items]="listOfItems" [$item]="itemTemplate" [$prev]="prevTemplate" [$next]="nextTemplate" (onSelectedItem)="selectedItem = $event.item; selectedIdx = $event.index" class="wrapper">
+                </div>
+            </div>
+
+            <ng-template #prevTemplate>
+                <mat-icon class="navigat-white">navigate_before</mat-icon>
+            </ng-template>
+            <ng-template #nextTemplate>
+                <mat-icon class="navigat-white">navigate_next</mat-icon>
+            </ng-template>
+            <ng-template let-item let-i="index" let-selectedIndex="selectedIndex" #itemTemplate>
+                <!--<div class="item" [ngStyle]="{ backgroundColor: item.bgColor }">
+                    <div>
+                        <img [src]="item.img" width="200" height="200" alt="placeholder" />
+                        <span [ngStyle]="{ 'font-weight': i === selectedIndex ? 'bold' : 'normal' }">{{item.name}}</span><br>
+                    </div>
+                </div>-->
+                <mat-card class="tof-card">
+                    <div class="one">{{item.title}}</div>
+                    <div class="two">{{item.price}}</div>
+                    <div class="three">{{item.value}}</div>
+                    <div class="four">{{item.share}}</div>
+                </mat-card>
+            </ng-template>
+        </div>
+        <div tdMediaToggle="gt-xs" class="push-top-sm">
+            <mat-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+                <!--<mat-card-header>
+                    <mat-card-title>Rcent News</mat-card-title>
+                </mat-card-header>-->
+                <div class="container">
+                    <h1>Top Movers</h1>
+                </div>
+                <mat-divider></mat-divider>
+                <mat-card class="top-news-card" *ngFor="let news of topNews">
+                    <div class="rn-image"><img [src]="news.image" height="150"></div>
+                    <div class="rn-data">
+                        <div><span class="channelname">{{news.channelname}}</span> on <span class="companyname">{{news.companyname}} {{news.sharevalue}}</span><span class="time">{{news.time}}</span></div>
+                        <p class="title">{{news.title}}</p>
+                        <p class="content">{{news.content}}</p>
+                        <div>
+                            <mat-icon>remove_red_eye</mat-icon><span class="views">{{news.views}}</span></div>
+                    </div>
+                </mat-card>
+            </mat-card>
+        </div>
+    </div>
+    <div flex-gt-sm="25">
+        <!--<mat-menu>
+                    <td-menu>
+                        <div td-menu-header class="mat-subhead">Notifications</div>
+                        <mat-nav-list dense>
+                            <ng-template let-last="last" ngFor [ngForOf]="[0,1,2]">
+                                <a mat-list-item>
+                                    <mat-icon matListAvatar>today</mat-icon>
+                                    <h4 mat-line><span class="text-wrap">Candy sales are on the rise!</span></h4>
+                                    <p mat-line>22 minutes ago</p>
+                                </a>
+                                <mat-divider *ngIf="!last"></mat-divider>
+                            </ng-template>
+                        </mat-nav-list>
+                        <button mat-button color="accent" td-menu-footer>
+              See All Notifications
+            </button>
+                    </td-menu>
+                </mat-menu>-->
+        <mat-card class="fixed-card" flex-gt-sm>
+            <mat-card-title>Cryptocurrencies
+                <button mat-icon-button class="currency-more">
+                            <mat-icon>more_horiz</mat-icon>
+                        </button>
+            </mat-card-title>
+            <mat-divider></mat-divider>
+            <mat-list>
+                <mat-list-item>
+                    <span class="currency currency-left">BTC</span>
+                    <span class="currency currency-right">$6,200.99</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="currency currency-left">BTC</span>
+                    <span class="currency currency-right">$6,200.99</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="currency currency-left">BTC</span>
+                    <span class="currency currency-right">$6,200.99</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="currency currency-left">BTC</span>
+                    <span class="currency currency-right">$6,200.99</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="currency currency-left">BTC</span>
+                    <span class="currency currency-right">$6,200.99</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="currency currency-left">BTC</span>
+                    <span class="currency currency-right">$6,200.99</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="currency currency-left">BTC</span>
+                    <span class="currency currency-right">$6,200.99</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="currency currency-left">BTC</span>
+                    <span class="currency currency-right">$6,200.99</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="currency currency-left">BTC</span>
+                    <span class="currency currency-right">$6,200.99</span>
+                </mat-list-item>
+            </mat-list>
+        </mat-card>
+    </div>
+    <div flex-gt-sm="8">
+    </div>
+</div>
+<!--<td-layout [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'push'" [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '240px' : '100%'" [class]="activeTheme">
+    <td-layout-nav [toolbarTitle]="''" logo="" navigationRoute="/">
+        <div td-toolbar-content layout="row" layout-align="start center" flex>
+            <mat-icon>brush</mat-icon>
+            <div td-toolbar-content layout="row" layout-align="start center" flex>
+                <td-search-box [alwaysVisible]="true" #searchBox placeholder="Search" [showUnderline]="false"></td-search-box>
+                <div flex>
+
+                </div>
+                <button mat-button matTooltip="Home">Home</button>
+                <button mat-button matTooltip="Home">Admin</button>
+                <button mat-button matTooltip="Notifications" [matMenuTriggerFor]="notificationsMenu">Notifications
+        </button>
+
+                <mat-menu #AccountMenu="matMenu">
+                    <td-menu>
+                        <div td-menu-header class="mat-subhead">Account</div>
+                        <mat-nav-list dense>
+                            <ng-template let-last="last" ngFor [ngForOf]="[0,1,2]">
+                                <a mat-list-item>
+                                    <mat-icon matListAvatar>today</mat-icon>
+                                    <h4 mat-line><span class="text-wrap">Candy sales are on the rise!</span></h4>
+                                    <p mat-line>22 minutes ago</p>
+                                </a>
+                                <mat-divider *ngIf="!last"></mat-divider>
+                            </ng-template>
+                        </mat-nav-list>
+                        <button mat-button color="accent" td-menu-footer>
+              See All Notifications
+            </button>
+                    </td-menu>
+                </mat-menu>
+                <button mat-button matTooltip="Account" [matMenuTriggerFor]="notificationsMenu">Account
+        </button>
+                <button mat-icon-button matTooltip="More" [mat-menu-trigger-for]="more">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+                <mat-menu xPosition="before" #more="matMenu">
+                    <button mat-menu-item *ngIf="activeTheme === 'theme-dark'" (click)="theme('theme-light')">
+              <mat-icon>brightness_high</mat-icon>
+              <span>Light Mode</span>
+            </button>
+                    <button mat-menu-item *ngIf="activeTheme != 'theme-dark'" (click)="theme('theme-dark')">
+              <mat-icon>brightness_low</mat-icon>
+              <span>Dark Mode</span>
+            </button>
+                </mat-menu>
+
+            </div>
+            <span>
+        <mat-menu #notificationsMenu="matMenu">
+          <td-menu>
+            <div td-menu-header class="mat-subhead">Notifications</div>
+            <mat-nav-list dense>
+              <ng-template let-last="last" ngFor [ngForOf]="[0,1,2]">
+                <a mat-list-item>
+            <h3 matLine> Firstname Lastname </h3>
+            <p matLine> Email description goes here </p>
+            </a>
+            <mat-divider *ngIf="!last"></mat-divider>
+            </ng-template>
+            </mat-nav-list>
+            <button mat-button color="accent" td-menu-footer>
+              See All Notifications
+            </button>
+            </td-menu>
+            </mat-menu>
+            </span>
+
+
+        </div>
+        <div flex layout-gt-sm="row" tdMediaToggle="gt-xs" layout-wrap [mediaClasses]="['push-sm']">
+            <div flex-gt-sm="8">
+            </div>
+            <div flex-gt-sm="60">
+                <mat-card>
+                    <div [style.height.px]="280" class="push-top-sm">
+                        <ngx-charts-line-chart [scheme]="{ domain: [ '#4DD0E1', '#BA68C8', '#FF7043' ] }" [results]="times" [gradient]="gradient" [autoScale]="false" [xAxis]="true" [yAxis]="true" [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxisTickFormatting]="axisDate">
+                        </ngx-charts-line-chart>
+                    </div>
+                </mat-card>
+                <div tdMediaToggle="gt-xs" class="push-top-sm">
+                    <mat-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+                        <mat-card-header>
+                            <mat-card-title>Top Movers</mat-card-title>
+                        </mat-card-header>
+                        <mat-divider></mat-divider>
+                        <mat-card class="tof-card">
+                            <div class="one">Liberty</div>
+                            <div class="two">Trip advisor</div>
+                            <mat-divider></mat-divider>
+                            <div class="three">Liberty</div>
+                            <div class="four">Trip advisor</div>
+                        </mat-card>
+                        <mat-card class="tof-card">
+                            <div class="one">Liberty</div>
+                            <div class="two">Trip advisor</div>
+                            <mat-divider></mat-divider>
+                            <div class="three">Liberty</div>
+                            <div class="four">Trip advisor</div>
+                        </mat-card>
+                        <mat-card class="tof-card">
+                            <div class="one">Liberty</div>
+                            <div class="two">Trip advisor</div>
+                            <mat-divider></mat-divider>
+                            <div class="three">Liberty</div>
+                            <div class="four">Trip advisor</div>
+                        </mat-card>
+                        <mat-card class="tof-card">
+                            <div class="one">Liberty</div>
+                            <div class="two">Trip advisor</div>
+                            <mat-divider></mat-divider>
+                            <div class="three">Liberty</div>
+                            <div class="four">Trip advisor</div>
+                        </mat-card>
+                        <mat-card class="tof-card">
+                            <div class="one">Liberty</div>
+                            <div class="two">Trip advisor</div>
+                            <mat-divider></mat-divider>
+                            <div class="three">Liberty</div>
+                            <div class="four">Trip advisor</div>
+                        </mat-card>
+                        <mat-card class="tof-card">
+                            <div class="one">Liberty</div>
+                            <div class="two">Trip advisor</div>
+                            <mat-divider></mat-divider>
+                            <div class="three">Liberty</div>
+                            <div class="four">Trip advisor</div>
+                        </mat-card>
+                        <mat-card class="tof-card">
+                            <div class="one">Liberty</div>
+                            <div class="two">Trip advisor</div>
+                            <mat-divider></mat-divider>
+                            <div class="three">Liberty</div>
+                            <div class="four">Trip advisor</div>
+                        </mat-card>
+                    </mat-card>
+                </div>
+                <div tdMediaToggle="gt-xs" class="push-top-sm">
+                    <mat-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+                        <mat-card-header>
+                            <mat-card-title>Rcent News</mat-card-title>
+                        </mat-card-header>
+                        <mat-divider></mat-divider>
+                        <mat-card>
+                            <div class="rn-image"></div>
+                            <div class="rn-data"></div>
+                        </mat-card>
+                    </mat-card>
+                </div>
+            </div>
+            <div flex-gt-sm="25">
+                <mat-card class="fixed-card" flex-gt-sm>
+                    <mat-card-title>Cryptocurrencies
+                        <button mat-icon-button matTooltip="More" class="currency-more">
+                            <mat-icon>more_horiz</mat-icon>
+                        </button>
+                    </mat-card-title>
+                    <mat-divider></mat-divider>
+                    <mat-list>
+                        <mat-list-item>
+                            <span class="currency currency-left">BTC</span>
+                            <span class="currency currency-right">$6,200.99</span>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <span class="currency currency-left">BTC</span>
+                            <span class="currency currency-right">$6,200.99</span>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <span class="currency currency-left">BTC</span>
+                            <span class="currency currency-right">$6,200.99</span>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <span class="currency currency-left">BTC</span>
+                            <span class="currency currency-right">$6,200.99</span>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <span class="currency currency-left">BTC</span>
+                            <span class="currency currency-right">$6,200.99</span>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <span class="currency currency-left">BTC</span>
+                            <span class="currency currency-right">$6,200.99</span>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <span class="currency currency-left">BTC</span>
+                            <span class="currency currency-right">$6,200.99</span>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <span class="currency currency-left">BTC</span>
+                            <span class="currency currency-right">$6,200.99</span>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <span class="currency currency-left">BTC</span>
+                            <span class="currency currency-right">$6,200.99</span>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card>
+            </div>
+            <div flex-gt-sm="8">
+            </div>
+        </div>
+    </td-layout-nav>
+</td-layout>
+
+<ng-template #dialogContent let-dialogRef="dialogRef">
+    <div layout="column" layout-fill>
+        <h2 mat-dialog-title>
+            Card Settings
+        </h2>
+        <mat-divider></mat-divider>
+        <mat-dialog-content flex>
+            <form class="pad">
+                <div layout="row" layout-margin>
+                    <mat-form-field flex>
+                        <input matInput placeholder="Card order" value="1" type="number">
+                    </mat-form-field>
+                    <mat-form-field flex>
+                        <input matInput placeholder="Card width" value="100" type="number">
+                    </mat-form-field>
+                </div>
+            </form>
+        </mat-dialog-content>
+        <mat-divider></mat-divider>
+        <mat-dialog-actions align="end">
+            <button type="button" mat-button class="text-upper" (click)="dialogRef.close()">Close</button>
+            <button type="button" mat-button color="accent" class="text-upper" (click)="dialogRef.close()">Save</button>
+        </mat-dialog-actions>
+    </div>
+</ng-template>-->
